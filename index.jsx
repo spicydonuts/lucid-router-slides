@@ -1,10 +1,10 @@
 /*global document*/
 
-import React from 'react/addons'
+import React, {Component, PropTypes} from 'react'
+import ReactDOM from 'react-dom'
 import context from './src/utils/context'
 
-import {Router, Route} from 'react-router'
-import HashHistory from 'react-router/lib/HashHistory'
+import * as router from 'lucid-router'
 
 import Alt from 'alt'
 import Flux from './src/flux/alt'
@@ -14,26 +14,40 @@ import config from './presentation/config'
 
 require('normalize.css')
 require('./themes/default/index.css')
-require('highlight.js/styles/monokai_sublime.css')
+require('highlight.js/styles/solarized_dark.css')
 
 const flux = new Flux()
 Alt.debug('flux', flux)
 
-class Presentation extends React.Component {
+class Presentation extends Component {
+  static childContextTypes = {router: PropTypes.object}
+
+  getChildContext() {
+    return {router}
+  }
+
   render() {
     return <Deck/>
   }
 }
 
-Presentation.contextTypes = {
-  router: React.PropTypes.object
+router.addRoutes([
+  {name: 'slide', path: '/(:slide)'}
+])
+
+const PresentationContext = context(Presentation, {
+  styles: config.theme,
+  print: config.print,
+  flux
+})
+
+const anchor = document.querySelector('#root')
+
+const render = location => {
+  ReactDOM.render(
+    <PresentationContext location={location} />,
+    anchor)
 }
 
-const PresentationContext = context(Presentation, {styles: config.theme, print: config.print, flux})
-
-React.render(
-  <Router history={new HashHistory()}>
-    <Route path='/' component={PresentationContext} />
-    <Route path='/:slide' component={PresentationContext} />
-  </Router>
-, document.body)
+render(router.getLocation())
+router.register(render)

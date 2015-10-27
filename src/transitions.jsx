@@ -1,6 +1,6 @@
 /*global setTimeout*/
 
-import React from 'react/addons'
+import React from 'react'
 import assign from 'object-assign'
 import tweenState from 'react-tween-state'
 
@@ -122,7 +122,7 @@ export default {
 
   },
   componentWillLeave(cb) {
-    const slide = parseInt(this.context.router.state.params.slide) || 0
+    const slide = parseInt(this.context.router.getLocation().state.slide) || 0
     const direction = this.props.slideIndex > slide
 
     this.setState({

@@ -1,4 +1,4 @@
-import React from 'react/addons'
+import React, {Component} from 'react'
 
 import {
   Appear, BlockQuote, Cite, CodePane, Deck, Fill,
@@ -17,7 +17,7 @@ const images = {
 
 preloader([images.city, images.kat])
 
-export default class extends React.Component {
+export default class extends Component {
   render() {
     return (
       <Deck transition={['zoom', 'slide']} transitionDuration={800}>

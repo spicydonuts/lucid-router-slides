@@ -62,7 +62,7 @@ The main `.jsx` file you write your deck in is `/presentation/deck.jsx`
 ```javascript
 // deck.jsx
 
-import React from 'react/addons';
+import React from 'react';
 import {
   Appear, BlockQuote, Cite, CodePane, Code, Deck, Fill, Fit,
   Heading, Image, Layout, ListItem, List, Quote, S, Slide, Text

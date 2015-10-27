@@ -1,11 +1,10 @@
-import React from 'react/addons'
+import React from 'react'
 
 const context = function context(Component, params) {
   const wrapper = React.createClass({
     displayName: 'ContextWrapper',
     propTypes: {
-      location: React.PropTypes.object,
-      params: React.PropTypes.object
+      location: React.PropTypes.object
     },
     childContextTypes: {
       styles: React.PropTypes.object,
@@ -14,32 +13,33 @@ const context = function context(Component, params) {
       overview: React.PropTypes.bool,
       export: React.PropTypes.bool,
       print: React.PropTypes.bool,
-      slide: React.PropTypes.number
+      slide: React.PropTypes.number,
+      router: React.PropTypes.object
     },
     getChildContext() {
       let styles = {}
       const location = this.props.location
-      if (location.query && 'print' in location.query) {
+      if ('print' in location.state) {
         styles = params.print
       } else {
         styles = params.styles
       }
       let slide = 0
-      if (this.props.params && 'slide' in this.props.params) {
-        slide = this.props.params.slide
+      if ('slide' in location.state) {
+        slide = Number(location.state.slide)
       }
       return {
         styles,
         flux: params.flux,
-        presenter: location.query && 'presenter' in location.query,
-        overview: location.query && 'overview' in location.query,
-        export: location.query && 'export' in location.query,
-        print: location.query && 'print' in location.query,
+        presenter: 'presenter' in location.state,
+        overview: 'overview' in location.state,
+        export: 'export' in location.state,
+        print: 'print' in location.state,
         slide
       }
     },
 
-    render: function render() {
+    render() {
       return <Component {...this.props} />
     }
   })
