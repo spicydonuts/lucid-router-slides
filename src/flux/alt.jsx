@@ -1,16 +1,16 @@
 /**
  * Alt instance.
  */
-import Alt from "alt";
+import Alt from 'alt'
 
-import SlideActions from "./slide-actions";
-import SlideStore from "./slide-store";
+import SlideActions from './slide-actions'
+import SlideStore from './slide-store'
 
 export default class Flux extends Alt {
   constructor(config = {}) {
-    super(config);
+    super(config)
 
-    this.addActions("SlideActions", SlideActions);
-    this.addStore("SlideStore", SlideStore);
+    this.addActions('SlideActions', SlideActions)
+    this.addStore('SlideStore', SlideStore)
   }
 }
