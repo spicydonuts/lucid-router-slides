@@ -1,5 +1,5 @@
 addRoutes([
-  {name: 'friends',      path: '/friends'}
+  {name: 'friends',      path: '/friends'},
   {name: 'friends.info', path: '/friends/:name'}
 ])
 

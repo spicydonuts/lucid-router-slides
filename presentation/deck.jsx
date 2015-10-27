@@ -118,6 +118,9 @@ const SlideDeck = () => (
       </List>
     </Slide>
 
+    <Slide transition={['slide', 'slide']} bgColor='primary' notes=''>
+    </Slide>
+
     <Slide transition={['slide']} bgColor='secondary'>
       <Link href='https://twitter.com/t_spicydonuts' target='_blank'>
         <Text lineHeight={0.5} textColor='primary'>@t_spicydonuts</Text>
