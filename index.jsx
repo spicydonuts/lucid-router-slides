@@ -46,7 +46,8 @@ const anchor = document.querySelector('#root')
 const render = location => {
   ReactDOM.render(
     <PresentationContext location={location} />,
-    anchor)
+    anchor
+  )
 }
 
 render(router.getLocation())
