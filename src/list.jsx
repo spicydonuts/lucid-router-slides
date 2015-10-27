@@ -5,17 +5,26 @@ import Radium from 'radium'
 @Radium
 class List extends Base {
   render() {
-    return (
-      <ul style={[this.context.styles.components.list, this.getStyles(), this.props.style]}>
-        {this.props.children}
-      </ul>
-    )
+    if (this.props.numbered) {
+      return (
+        <ol style={[this.context.styles.components.list, this.getStyles(), this.props.style]}>
+          {this.props.children}
+        </ol>
+      )
+    } else {
+      return (
+        <ul style={[this.context.styles.components.list, this.getStyles(), this.props.style]}>
+          {this.props.children}
+        </ul>
+      )
+    }
   }
 }
 
 List.propTypes = {
   children: React.PropTypes.node,
-  style: React.PropTypes.object
+  style: React.PropTypes.object,
+  numbered: React.PropTypes.bool
 }
 
 List.contextTypes = {

@@ -1,0 +1,8 @@
+const pattern = new UrlPattern('/users(/:id)')
+
+pattern.match('/users/10') // {id: '10'}
+pattern.match('/users') // {}
+pattern.match('/products/5') // null
+
+pattern.stringify() // '/users'
+pattern.stringify({id: 20}) // '/users/20'

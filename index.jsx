@@ -14,7 +14,7 @@ import config from './presentation/config'
 
 require('normalize.css')
 require('./themes/default/index.css')
-require('highlight.js/styles/solarized_dark.css')
+require('highlight.js/styles/tomorrow.css')
 
 const flux = new Flux()
 Alt.debug('flux', flux)

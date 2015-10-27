@@ -1,0 +1,17 @@
+addRoutes([
+  {name: 'friends',      path: '/friends'}
+  {name: 'friends.info', path: '/friends/:name'}
+])
+
+getLocation('/friends/alice')
+// {
+//   path: '/friends/alice',
+//   name: 'friends.info',
+//   pathname: '/friends/alice',
+//   search: '',
+//   hash: '',
+//   hashSearch: '',
+//   state: {
+//     name: 'alice'
+//   }
+// }
